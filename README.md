@@ -72,7 +72,7 @@ Dans le microservice `coolriel`, complétez l'implémentation de `src/handlers/u
 
 ### 3. Ajoutez des types d'utilisateur
 
-Dans le `store_manager`, modifiez `db-init/init.sql` pour ajouter champ `user_type_id` à la table `User`. Créez une table `UserType` pour faire la distinction entre trois types d'utilisateurs : clients, employés et directeurs du magasin. Relecionez `UserType` et `User` en utilisant `FOREIGN KEY`.
+Dans le `store_manager`, modifiez `db-init/init.sql` pour ajouter la colonne `user_type_id` à la table `User`. Créez une table `UserType` pour faire la distinction entre trois types d'utilisateurs : clients, employés et directeurs du magasin. Relecionez `UserType` et `User` en utilisant `FOREIGN KEY`.
 
 ```sql
     -- User types table

@@ -28,7 +28,7 @@ services:
       timeout: 10s
       retries: 5
     networks:
-      - labo07-network
+      - labo05-network
 
   coolriel:
     build: .
@@ -40,8 +40,8 @@ services:
       - ./output:/app/output
     restart: unless-stopped
     networks:
-      - labo07-network
+      - labo05-network
 
 networks:
-  labo07-network:
+  labo05-network:
     external: true
