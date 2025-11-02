@@ -19,14 +19,14 @@ class UserDeletedHandler(EventHandler):
         super().__init__()
     
     def get_event_type(self) -> str:
+        """Return the event type this handler processes"""
         return "UserDeleted"
     
     def handle(self, event_data: Dict[str, Any]) -> None:
+        """Create an HTML email based on user deletion data"""
         # TODO: implémentation basée sur UserCreated
         user_id = 0
-        name = "None"
-        email = "None"
-        datetime = "YYYY-MM-DD HH:mm:ss"
+        name = "Nobody"
         filename = "None"
-
+        self.logger.debug(event_data)
         self.logger.debug(f"Courriel HTML généré à {name} (ID: {user_id}) at {filename}")

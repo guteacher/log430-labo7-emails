@@ -19,9 +19,12 @@ class UserCreatedHandler(EventHandler):
         super().__init__()
     
     def get_event_type(self) -> str:
+        """Return the event type this handler processes"""
         return "UserCreated"
     
     def handle(self, event_data: Dict[str, Any]) -> None:
+        """Create an HTML email based on user creation data"""
+
         user_id = event_data.get('id')
         name = event_data.get('name')
         email = event_data.get('email')
