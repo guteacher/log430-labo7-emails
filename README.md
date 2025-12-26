@@ -135,11 +135,15 @@ Exécutez `docker compose restart kafka` pour redémarrer votre Kafka avec les n
 
 ### 6. Créez un consommateur historique
 
-Pour lire les événements déjà enregistrés, complétez l'implémentation du consommateur dans `consumers/user_event_history_consumer.py` qui lit l'historique complet des événements du topic `user-events`. Il est important de donner à ce consommateur un `group_id` distinct, sinon il ne pourra pas lire la partition entière. 
+Pour lire les événements déjà enregistrés, complétez l'implémentation du consommateur dans `consumers/user_event_history_consumer.py` qui lit l'historique complet des événements du topic `user-events`. Il est important de donner à ce consommateur un `group_id` distinct, sinon il ne pourra pas lire la partition entière.
 
 > 📝 NOTE : Si deux consommateurs avec le même `group_id` essaient de lire une partition en même temps, Kafka répartira les partitions entre eux, et ainsi chaque consommateur lira une partie égale des événements (par exemple, une division 50/50 entre 2 consommateurs). Nous ne voulons pas utiliser cette fonctionnalité ici, mais elle existe pour faciliter la lecture en parallèle de grandes quantités d'événements.
 
-De plus, utilisez le paramètre `auto_offset_reset=earliest` dans `UserEventHistoryConsumer` pour lire la sequence de messages depuis le début (earliest), pas depuis la fin (latest). Finalement, utilisez [json.dumps](https://docs.python.org/3/library/json.html) pour enregistrer les événements dans un fichier JSON sur le disque.
+De plus, utilisez le paramètre `auto_offset_reset=earliest` dans `UserEventHistoryConsumer` pour lire la sequence de messages depuis le début (earliest), pas depuis la fin (latest). Il est également important de spécifier le paramètre `consumer_timeout_ms` pour faire en sorte que le consommateur s'arrête quelques millisecondes après avoir traité le dernier événement historique (par exemple : `consumer_timeout_ms=5000`).
+
+Finalement, utilisez [json.dumps](https://docs.python.org/3/library/json.html) pour enregistrer les événements dans un fichier JSON sur le disque.
+
+> ⚠️ ATTENTION : N'appelez pas `json.dumps` à chaque itération de la boucle. Les opérations d'entrée/sortie (I/O) répétées sont très coûteuses en performance et ralentiront considérablement le traitement. Privilégiez plutôt l'écriture par lots (accumulez les événements et écrivez-les après la fin de la boucle), ou ouvrez le fichier une seule fois avant la boucle et écrivez chaque événement au format JSONL (un objet JSON par ligne).
 
 ### 7. Utilisez votre nouveau consommateur
 
