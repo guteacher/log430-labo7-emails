@@ -14,7 +14,7 @@ Notre magasin a grandi et nous souhaitons maintenant améliorer l'engagement cli
 
 ### 1. Changez de branche du labo 05
 
-Comme dans le labo précédent, nous allons utiliser une version légèrement modifiée du labo 5 qui apporte quelques modifications au code. Dans le dépôt `log430-a25-labo5`, changez à la branche `feature/labo07`. Pour changer de branche en utilisant votre terminal, vous pouvez exécuter `git checkout nom_du_branch` dans le répertoire de chaque dépôt.
+Comme dans le labo précédent, nous allons utiliser une version légèrement modifiée du labo 5 qui apporte quelques modifications au code. Dans le dépôt `log430-labo5`, changez à la branche `feature/labo07`. Pour changer de branche en utilisant votre terminal, vous pouvez exécuter `git checkout nom_du_branch` dans le répertoire de chaque dépôt.
 
 ### 2. Clonez le dépôt du labo 07
 
@@ -50,7 +50,7 @@ docker compose up -d
 
 ## 🧪 Activités pratiques
 
-> ⚠️ ATTENTION : Dans ce laboratoire, nous allons analyser et modifier des fichiers dans les dépôts `log430-a25-labo5` (`store_manager`) et `log430-labo7-emails` (`coolriel`). Veuillez faire attention à l'énoncé de chaque activité afin de savoir quel dépôt utiliser.
+> ⚠️ ATTENTION : Dans ce laboratoire, nous allons analyser et modifier des fichiers dans les dépôts `log430-labo5` (`store_manager`) et `log430-labo7-emails` (`coolriel`). Veuillez faire attention à l'énoncé de chaque activité afin de savoir quel dépôt utiliser.
 
 ### 1. Analysez l'architecture
 
