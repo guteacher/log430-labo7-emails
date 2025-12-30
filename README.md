@@ -12,9 +12,29 @@
 
 Notre magasin a grandi et nous souhaitons maintenant améliorer l'engagement client via des notifications automatisées. Différents événements dans notre application (création d'utilisateur, nouvelle commande, changement de statut) peuvent déclencher l'envoi de courriels. Dans ce laboratoire, nous créerons **Coolriel**, un microservice de gestion des notifications event-driven qui générera les courriels HTML sans les envoyer réellement (la configuration et l’utilisation d'un serveur SMTP étant hors du scope de ce cours).
 
-### 1. Changez de branche du labo 05
+### 1. Changez de version du labo 05
 
-Comme dans le labo précédent, nous allons utiliser une version légèrement modifiée du labo 5 qui apporte quelques modifications au code. Dans le dépôt `log430-labo5`, changez à la branche `feature/labo07`. Pour changer de branche en utilisant votre terminal, vous pouvez exécuter `git checkout nom_du_branch` dans le répertoire de chaque dépôt.
+Comme dans le labo précédent, nous allons utiliser une version légèrement modifiée du labo 5 qui apporte quelques modifications au code.
+
+Vous pouvez copier les fichiers dans `log430-labo7-emails/log430-labo5-changes` et les coller dans le bon endroit dans `log430-labo5`. 
+
+Même si vous avez déjà terminé toutes les activités du labo5, nous vous encourageons à faire en sorte que vos fichiers dans `log430-labo5` sont identiques aux fichiers dans ``log430-labo7-emails/log430-labo5-changes`.
+
+#### Changements additionels
+Dans `log430-labo5`, ajoutez la variable `KAFKA_HOST` à votre `.env` et reconstruissez le conteneur:
+```bash
+KAFKA_HOST=kafka:9092
+```
+
+Créez `singleton.py` dans `log430-labo5` (repertoire racine). Ce fichier sera la classe de base pour les producteurs/consommateurs Kafka dans `log430-labo5`:
+```py
+class Singleton(type):
+  _instances = {}
+  def __call__(cls, *args, **kwargs):
+    if cls not in cls._instances:
+      cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+    return cls._instances[cls]
+```
 
 ### 2. Clonez le dépôt du labo 07
 
