@@ -179,6 +179,9 @@ Utilisez votre nouveau `UserEventHistoryConsumer` dans `coolriel.py` pour tester
 
 > 💡 **Question 5** : Combien d'événements avez-vous récupérés dans votre historique ? Illustrez avec le fichier JSON généré.
 
+### 8. Éxécutez un test de charge
+Éxécutez un test de charge sur l'application Store Manager en utilisant Locust. Suivez les mêmes instructions que celles du laboratoire 4, activité 5. Testez la création et la suppression d'utilisateurs et consignez vos observations sur les performances dans le rapport.
+
 ## 📦 Livrables
 
 - Un fichier .zip contenant l'intégralité du code source du projet Labo 07.
