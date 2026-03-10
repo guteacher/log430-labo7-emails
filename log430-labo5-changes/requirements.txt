@@ -10,3 +10,5 @@ graphene>=3.4
 requests>=2.32
 locust
 kafka-python==2.2.15
+prometheus-client 
+prometheus-flask-exporter
