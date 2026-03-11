@@ -114,7 +114,7 @@ Dans le `store_manager`, modifiez `db-init/init.sql` pour ajouter la colonne `us
         name VARCHAR(100) NOT NULL,
         email VARCHAR(150) NOT NULL UNIQUE,
         user_type_id INT NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_type_id) REFERENCES user_types(id) ON DELETE RESTRICT
     );
     INSERT INTO users (name, email, user_type_id) VALUES
